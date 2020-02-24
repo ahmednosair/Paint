@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="eg.edu.alexu.csd.oop.draw.gui.Controller">
+    <center>
+        <Pane style="-fx-background-color: white;">
+            <Canvas fx:id="paint"  width="1200" height="500" onMousePressed="#handle" onMouseReleased="#handle" />
+        </Pane>
+    </center>
+    <left>
+        <VBox spacing="5.0">
+            <BorderPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </BorderPane.margin>
+            <ColorPicker fx:id="colorPick" BorderPane.alignment="TOP_LEFT" maxWidth="140" style="-fx-font-size: 18px;">
+                <value>
+                    <Color/>
+                </value>
+                <VBox.margin>
+                    <Insets bottom="20.0"/>
+                </VBox.margin>
+            </ColorPicker>
+           <Label prefWidth="140" alignment="CENTER" text="Shapes" style="-fx-border-style: solid;-fx-border-width: 2px;-fx-font-size: 18;-fx-font-weight: bold;"/>
+            <VBox style="-fx-border-style: solid;-fx-border-width: 2px  ;-fx-font-size: 18px;">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+                <fx:define>
+                    <ToggleGroup fx:id="shapeChoice"/>
+                </fx:define>
+                <RadioButton text="Line" toggleGroup="$shapeChoice" selected="true"/>
+                <RadioButton text="Square" toggleGroup="$shapeChoice" />
+                <RadioButton text="Rectangle" toggleGroup="$shapeChoice" />
+                <RadioButton text="Triangle" toggleGroup="$shapeChoice" />
+                <RadioButton text="Circle" toggleGroup="$shapeChoice" />
+                <RadioButton text="Ellipse" toggleGroup="$shapeChoice"/>
+            </VBox>
+
+
+        </VBox>
+
+    </left>
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" BorderPane.alignment="BOTTOM_CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0"/>
+            </BorderPane.margin>
+            <Button prefWidth="125" text="Undo" style="-fx-font-size: 18px;"/>
+            <Button prefWidth="125" text="Redo" style="-fx-font-size: 18px;"/>
+            <Button prefWidth="125" text="Save" style="-fx-font-size: 18px;"/>
+            <Button prefWidth="125" text="Load" style="-fx-font-size: 18px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

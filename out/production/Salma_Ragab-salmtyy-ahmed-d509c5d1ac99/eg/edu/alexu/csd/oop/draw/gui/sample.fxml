@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="eg.edu.alexu.csd.oop.draw.gui.Controller"
+            style="-fx-font-size: 16px;">
+    <center>
+        <BorderPane style="-fx-background-color: white;-fx-border-style: solid;">
+            <BorderPane.margin>
+                <Insets left="10.0" top="10.0" bottom="10.0" right="10.0"/>
+            </BorderPane.margin>
+            <Canvas fx:id="paint" width="1185" height="635" onMousePressed="#storefPoint" onMouseDragged="#liveEffect"
+                    onMouseReleased="#handle"/>
+        </BorderPane>
+    </center>
+    <left>
+        <VBox spacing="5.0">
+            <BorderPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </BorderPane.margin>
+            <Label text="Outline color" prefWidth="140" alignment="CENTER"
+                   style="-fx-border-style: solid;-fx-border-width: 2px;"/>
+            <ColorPicker onAction="#changeColor" fx:id="colorPick" BorderPane.alignment="TOP_LEFT" maxWidth="140">
+                <value>
+                    <Color/>
+                </value>
+                <VBox.margin>
+                    <Insets bottom="10.0"/>
+                </VBox.margin>
+            </ColorPicker>
+            <CheckBox fx:id="fillEnable" text="Fill color" onAction="#enableFill" prefWidth="140"
+                      style="-fx-border-style: solid;-fx-border-width: 2px;"/>
+            <ColorPicker onAction="#changeFillColor" fx:id="fillColorPick" disable="true" BorderPane.alignment="TOP_LEFT" maxWidth="140">
+                <value>
+                    <Color/>
+                </value>
+                <VBox.margin>
+                    <Insets bottom="10.0"/>
+                </VBox.margin>
+            </ColorPicker>
+            <Label prefWidth="150" alignment="CENTER" text="Shapes"
+                   style="-fx-border-style: solid;-fx-border-width: 2px;-fx-font-weight: bold;"/>
+            <VBox fx:id="shapes" minWidth="150" style="-fx-border-style: solid;-fx-border-width: 2px  ;">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <fx:define>
+                    <ToggleGroup fx:id="shapeChoice"/>
+                </fx:define>
+                <RadioButton text="Line" toggleGroup="$shapeChoice" selected="true"/>
+                <RadioButton text="Square" toggleGroup="$shapeChoice"/>
+                <RadioButton text="Rectangle" toggleGroup="$shapeChoice"/>
+                <RadioButton text="Triangle ▲" toggleGroup="$shapeChoice"/>
+                <RadioButton text="Triangle ◣" toggleGroup="$shapeChoice"/>
+                <RadioButton text="Circle" toggleGroup="$shapeChoice"/>
+                <RadioButton text="Ellipse" toggleGroup="$shapeChoice"/>
+            </VBox>
+            <VBox>
+
+            <Button fx:id="deleteButton" text="Delete" prefWidth="140" alignment="CENTER" disable="true"
+                    onMouseClicked="#delete">
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0"/>
+                </VBox.margin>
+            </Button>
+
+            <fx:define>
+                <ToggleGroup fx:id="editChoice"/>
+            </fx:define>
+                <Label text="Edit Mode" prefWidth="150" alignment="CENTER"
+                       style="-fx-border-style: solid;-fx-border-width: 2px;-fx-font-weight: bold;">
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                </Label>
+            <VBox style="-fx-border-style: solid;-fx-border-width: 2px  ;" >
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <RadioButton text="Move" toggleGroup="$editChoice" selected="true"/>
+                <RadioButton text="Resize" toggleGroup="$editChoice"/>
+            </VBox>
+            </VBox>
+        </VBox>
+
+    </left>
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" BorderPane.alignment="BOTTOM_CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0"/>
+            </BorderPane.margin>
+            <Button prefWidth="125" text="Undo" onAction="#undo" disable="true" fx:id="undoButton"/>
+            <Button prefWidth="125" text="Redo" onAction="#redo" disable="true" fx:id="redoButton"/>
+            <Button prefWidth="125" text="Save" onAction="#save" />
+            <Button prefWidth="125" text="Load" onAction="#load" />
+            <Button prefWidth="125" text="Add plugin" onAction="#addPlugin" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
